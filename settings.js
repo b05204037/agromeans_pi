@@ -15,18 +15,18 @@
  **/
 
 // config the device name
-//var farmName = 'farmtest';
-var farmName = 'farm7';
+var farmName = 'farmtest';
 var nodeName = 'node1';
-var zeroName = 'zero';0
+var zeroName = 'zero';
 
 // function name of the mqtt
 var func = ['detect_buttom', 'height_form', 'show_height', 'detect_state', 
 		'height_state', 'get_image', 'get_data', 'ai_status', 'image'];
-var lightControl = ['led', 'uv', 'ir', 'manual_switch'];
+var lightControl = ['led', 'uv', 'ir', 'manual_switch', 'solar_switch', 'solar_time'];
 var sensor = ['cjmcu', 'mh'];
 var zero = ['led', 'uv', 'ir'];
 var debug = ['write_70_false', '70_state', '70_state_out', 'net_check', 'net_status'];
+var health = ['ndvi_image', 'ndvi_json']
 
 // timezone 
 process.env.TZ = "Europe/Brussels";
@@ -46,7 +46,9 @@ process.env.MQTT_IMAGE = `${farmName}/${func[8]}/${nodeName}`;
 process.env.MQTT_LED = `${farmName}/${lightControl[0]}/${nodeName}`;
 process.env.MQTT_UV = `${farmName}/${lightControl[1]}/${nodeName}`;
 process.env.MQTT_IR = `${farmName}/${lightControl[2]}/${nodeName}`;
-process.env.MQTT_MUNUAL_SWITCH = `${farmName}/${lightControl[3]}/${nodeName}`; 
+process.env.MQTT_MANUAL_SWITCH = `${farmName}/${lightControl[3]}/${nodeName}`; 
+process.env.MQTT_SOLAR_SWITCH = `${farmName}/${lightControl[4]}/${nodeName}`;
+process.env.MQTT_SOLAR_TIME = `${farmName}/${lightControl[5]}/${nodeName}`;
 
 // env variable for sensor
 process.env.MQTT_CJMCU = `${farmName}/${sensor[0]}/${nodeName}`;
@@ -63,6 +65,10 @@ process.env.MQTT_70_STATE = `${farmName}/${debug[1]}/${nodeName}`;
 process.env.MQTT_70_STATE_OUT = `${farmName}/${debug[2]}/${nodeName}`;
 process.env.MQTT_NET_CHECK = `${farmName}/${debug[3]}/${nodeName}`;
 process.env.MQTT_NET_STATUS = `${farmName}/${debug[4]}/${nodeName}`;
+
+// ndvi 
+process.env.MQTT_NDVI_IMAGE = `${farmName}/${health[0]}/${nodeName}`;
+process.env.MQTT_NDVI_JSON = `${farmName}/${health[1]}/${nodeName}`;
 
 console.log(process.env)
 module.exports = {
@@ -289,6 +295,7 @@ module.exports = {
     // can be accessed in a function block as:
     //    global.get("os")
     functionGlobalContext: {
+	fs: require('fs')
         // os:require('os'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
