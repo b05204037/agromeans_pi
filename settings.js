@@ -15,7 +15,7 @@
  **/
 
 // config the device name
-var farmName = 'farmtest';
+var farmName = 'farm7';
 var nodeName = 'node1';
 var zeroName = 'zero';
 
@@ -26,7 +26,7 @@ var lightControl = ['led', 'uv', 'ir', 'manual_switch', 'solar_switch', 'solar_t
 var sensor = ['cjmcu', 'mh'];
 var zero = ['led', 'uv', 'ir'];
 var debug = ['write_70_false', '70_state', '70_state_out', 'net_check', 'net_status'];
-var health = ['ndvi_image', 'ndvi_json']
+var health = ['ndvi_image', 'ndvi_json', 'ndvi_detect']
 
 // timezone 
 process.env.TZ = "Europe/Brussels";
@@ -69,6 +69,7 @@ process.env.MQTT_NET_STATUS = `${farmName}/${debug[4]}/${nodeName}`;
 // ndvi 
 process.env.MQTT_NDVI_IMAGE = `${farmName}/${health[0]}/${nodeName}`;
 process.env.MQTT_NDVI_JSON = `${farmName}/${health[1]}/${nodeName}`;
+process.env.MQTT_NDVI_DETECT = `${farmName}/${health[2]}/${nodeName}`;
 
 console.log(process.env)
 module.exports = {
