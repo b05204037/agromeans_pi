@@ -27,9 +27,14 @@ var sensor = ['cjmcu', 'mh'];
 var zero = ['led', 'uv', 'ir'];
 var debug = ['write_70_false', '70_state', '70_state_out', 'net_check', 'net_status'];
 var health = ['ndvi_image', 'ndvi_json', 'ndvi_detect']
+var init = ['init_req', 'init_res']
 
 // timezone 
 process.env.TZ = "Europe/Brussels";
+
+// init flow 
+process.env.MQTT_INIT_REQ = `${farmName}/${init[0]}/${nodeName}`;
+process.env.MQTT_INIT_RES = `${farmName}/${init[1]}/${nodeName}`;
 
 // env variable for func 
 process.env.MQTT_DETECT_BUTTOM = `${farmName}/${func[0]}/${nodeName}`;
