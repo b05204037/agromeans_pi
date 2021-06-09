@@ -22,7 +22,7 @@ var zeroName = 'zero';
 // function name of the mqtt
 var func = ['detect_buttom', 'height_form', 'show_height', 'detect_state', 
 		'height_state', 'get_image', 'get_data', 'ai_status', 'image'];
-var lightControl = ['led', 'uv', 'ir', 'manual_switch', 'solar_switch', 'solar_time'];
+var lightControl = ['led', 'uv', 'ir', 'manual_switch', 'solar_switch', 'solar_time', 'solar_time_res'];
 var sensor = ['cjmcu', 'mh'];
 var zero = ['led', 'uv', 'ir'];
 var debug = ['write_70_false', '70_state', '70_state_out', 'net_check', 'net_status'];
@@ -54,6 +54,7 @@ process.env.MQTT_IR = `${farmName}/${lightControl[2]}/${nodeName}`;
 process.env.MQTT_MANUAL_SWITCH = `${farmName}/${lightControl[3]}/${nodeName}`; 
 process.env.MQTT_SOLAR_SWITCH = `${farmName}/${lightControl[4]}/${nodeName}`;
 process.env.MQTT_SOLAR_TIME = `${farmName}/${lightControl[5]}/${nodeName}`;
+process.env.MQTT_SOLAR_TIME_RES = `${farmName}/${lightControl[6]}/${nodeName}`;
 
 // env variable for sensor
 process.env.MQTT_CJMCU = `${farmName}/${sensor[0]}/${nodeName}`;
